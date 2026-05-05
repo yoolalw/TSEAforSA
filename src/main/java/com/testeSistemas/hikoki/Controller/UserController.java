@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 @CrossOrigin(origins = "*")
 public class UserController {
 
@@ -26,15 +26,15 @@ public class UserController {
         return ResponseEntity.ok(userService.adicionarUsuario(userEntity));
     }
 
-    @PutMapping("{/idUser}")
-    public ResponseEntity<UserEntity> atualizarUsuario(@PathVariable Integer idUser,
+    @PutMapping("/{id}")
+    public ResponseEntity<UserEntity> atualizarUsuario(@PathVariable Integer id,
                                                        @RequestBody UserEntity userEntity) {
-        return ResponseEntity.ok(userService.atualizarUsuario(idUser, userEntity));
+        return ResponseEntity.ok(userService.atualizarUsuario(id, userEntity));
     }
 
-    @DeleteMapping("{idUser}")
-    public void desligarUsuario(@PathVariable Integer idUser) {
-        userService.desligarUsuario(idUser);
+    @DeleteMapping("/{id}")
+    public void desligarUsuario(@PathVariable Integer id) {
+        userService.desligarUsuario(id);
     }
 
 }

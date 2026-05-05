@@ -26,8 +26,8 @@ public class PecaService {
         return pecaRepository.save(pecaEntity);
     }
 
-    public PecaEntity alterarNome(Integer idPeca, PecaEntity pecaAtualizar){
-        PecaEntity pecaExistente = pecaRepository.findById(idPeca)
+    public PecaEntity alterarNome(Integer id, PecaEntity pecaAtualizar){
+        PecaEntity pecaExistente = pecaRepository.findById(id)
                 .orElseThrow(NoSuchElementException::new);
 
         pecaExistente.setNomePeca(pecaAtualizar.getNomePeca());
@@ -35,9 +35,9 @@ public class PecaService {
         return pecaRepository.save(pecaExistente);
     }
 
-    public void deletarPeca(Integer idPeca){
-        if(pecaRepository.existsById(idPeca)){
-            pecaRepository.deleteById(idPeca);
+    public void deletarPeca(Integer id){
+        if(pecaRepository.existsById(id)){
+            pecaRepository.deleteById(id);
         }
     }
 

@@ -19,19 +19,20 @@ public class PecaController {
     public List<PecaEntity> listarPecas() {
         return pecaService.listarPecas();
     }
+
     @PostMapping("/novaPeca")
-    public ResponseEntity<PecaEntity> adicionarPeca(@RequestBody PecaEntity pecaEntity){
+    public ResponseEntity<PecaEntity> adicionarPeca(@RequestBody PecaEntity pecaEntity) {
         return ResponseEntity.ok(pecaService.adicionarPeca(pecaEntity));
     }
 
-    @PutMapping("/{idPeca}")
-    public ResponseEntity<PecaEntity> atualizarNome(@PathVariable Integer idPeca,
-                                                    @RequestBody PecaEntity pecaEntity){
-        return ResponseEntity.ok(pecaService.alterarNome(idPeca, pecaEntity));
+    @PutMapping("/{id}")
+    public ResponseEntity<PecaEntity> atualizarNome(@PathVariable Integer id,
+                                                    @RequestBody PecaEntity pecaEntity) {
+        return ResponseEntity.ok(pecaService.alterarNome(id, pecaEntity));
     }
 
-    @DeleteMapping("/{idPeca}")
-    public void deletarPeca(@PathVariable Integer idPeca){
-        pecaService.deletarPeca(idPeca);
+    @DeleteMapping("/{id}")
+    public void deletarPeca(@PathVariable Integer id) {
+        pecaService.deletarPeca(id);
     }
 }

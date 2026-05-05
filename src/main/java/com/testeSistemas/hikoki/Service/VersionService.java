@@ -29,9 +29,9 @@ public class VersionService {
 
     }
 
-    public void deletarVersao(Integer idVersao){
-        if(versionRepository.existsById(idVersao)){
-            versionRepository.deleteById(idVersao);
+    public void deletarVersao(Integer id){
+        if(versionRepository.existsById(id)){
+            versionRepository.deleteById(id);
         }
     }
 

@@ -26,9 +26,9 @@ public class VersionController {
         return ResponseEntity.ok(versionService.adicionarVersao(versionEntity));
     }
 
-    @DeleteMapping("/idVersao")
-    public void deletarVersao(@PathVariable Integer idVersao){
-        versionService.deletarVersao(idVersao);
+    @DeleteMapping("/{id}")
+    public void deletarVersao(@PathVariable Integer id){
+        versionService.deletarVersao(id);
     }
 
 }

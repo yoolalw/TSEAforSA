@@ -25,8 +25,8 @@ public class UserService {
         return userRepository.save(userEntity);
     }
 
-    public UserEntity atualizarUsuario(Integer idUser, UserEntity userEntity){
-        UserEntity userExistente = userRepository.findById(idUser)
+    public UserEntity atualizarUsuario(Integer id, UserEntity userEntity){
+        UserEntity userExistente = userRepository.findById(id)
                 .orElseThrow(NoSuchElementException::new);
 
         userExistente.setNomeUser(userEntity.getNomeUser());
@@ -36,9 +36,9 @@ public class UserService {
         return userRepository.save(userExistente);
     }
 
-    public void desligarUsuario(Integer idUser){
-        if(userRepository.existsById(idUser)){
-            userRepository.deleteById(idUser);
+    public void desligarUsuario(Integer id){
+        if(userRepository.existsById(id)){
+            userRepository.deleteById(id);
         }
     }
 
