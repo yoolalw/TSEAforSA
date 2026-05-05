@@ -1,0 +1,37 @@
+package com.testeSistemas.hikoki.Controller;
+
+import com.testeSistemas.hikoki.Entity.PecaEntity;
+import com.testeSistemas.hikoki.Service.PecaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/peca")
+@CrossOrigin(origins = "*")
+public class PecaController {
+    @Autowired
+    private PecaService pecaService;
+
+    @GetMapping
+    public List<PecaEntity> listarPecas() {
+        return pecaService.listarPecas();
+    }
+    @PostMapping("/novaPeca")
+    public ResponseEntity<PecaEntity> adicionarPeca(@RequestBody PecaEntity pecaEntity){
+        return ResponseEntity.ok(pecaService.adicionarPeca(pecaEntity));
+    }
+
+    @PutMapping("/{idPeca}")
+    public ResponseEntity<PecaEntity> atualizarNome(@PathVariable Integer idPeca,
+                                                    @RequestBody PecaEntity pecaEntity){
+        return ResponseEntity.ok(pecaService.alterarNome(idPeca, pecaEntity));
+    }
+
+    @DeleteMapping("/{idPeca}")
+    public void deletarPeca(@PathVariable Integer idPeca){
+        pecaService.deletarPeca(idPeca);
+    }
+}
