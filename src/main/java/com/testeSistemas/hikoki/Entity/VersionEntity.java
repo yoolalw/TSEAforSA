@@ -24,8 +24,10 @@ public class VersionEntity {
     private String urlDoc;
 
     @ManyToOne
-    @JoinColumn(name = "pecas", nullable = false)
+    @JoinColumn(name="nome_peca", nullable = false)
     @JsonIgnore
     private PecaEntity pecaEntity;
+
+
 
 }

@@ -1,5 +1,6 @@
 package com.testeSistemas.hikoki.Entity;
 
+import com.testeSistemas.hikoki.Repository.VersionRepository;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

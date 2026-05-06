@@ -20,6 +20,12 @@ public class PecaController {
         return pecaService.listarPecas();
     }
 
+    @GetMapping("/{id}")
+    public PecaEntity listarId(@PathVariable Integer id){
+        return pecaService.listarId(id);
+    }
+
+
     @PostMapping("/novaPeca")
     public ResponseEntity<PecaEntity> adicionarPeca(@RequestBody PecaEntity pecaEntity) {
         return ResponseEntity.ok(pecaService.adicionarPeca(pecaEntity));

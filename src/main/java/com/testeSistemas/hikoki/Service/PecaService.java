@@ -22,6 +22,11 @@ public class PecaService {
         return pecaRepository.findAll(sort);
     }
 
+    public PecaEntity listarId(Integer id){
+        return pecaRepository.findById(id)
+                .orElseThrow(NoSuchElementException::new);
+    }
+
     public PecaEntity adicionarPeca(PecaEntity pecaEntity){
         return pecaRepository.save(pecaEntity);
     }
