@@ -16,22 +16,30 @@ public class PecaService {
     @Autowired
     private PecaRepository pecaRepository;
 
-    public List<PecaEntity> listarPecas(){
-        Sort sort  = Sort.by("dataCriacao").descending()
-                .and(Sort.by("nomePeca"));
+    public List<PecaEntity> listarPecas() {
+        Sort sort = Sort.by("dataCriacao").descending()
+                .and(Sort.by("versao").descending());
         return pecaRepository.findAll(sort);
     }
 
-    public PecaEntity listarId(Integer id){
+    public PecaEntity listarId(Integer id) {
         return pecaRepository.findById(id)
                 .orElseThrow(NoSuchElementException::new);
     }
 
-    public PecaEntity adicionarPeca(PecaEntity pecaEntity){
+    public PecaEntity adicionarPeca(PecaEntity pecaEntity) {
         return pecaRepository.save(pecaEntity);
     }
 
-    public PecaEntity alterarNome(Integer id, PecaEntity pecaAtualizar){
+    public PecaEntity adicionarVersao(PecaEntity pecaEntity) {
+        if (pecaRepository.findByVersao(pecaEntity.getVersao()).isPresent()) {
+            throw new NoSuchElementException("Essa versao ja existe.");
+        }
+        return pecaRepository.save(pecaEntity);
+    }
+
+
+    public PecaEntity alterarNome(Integer id, PecaEntity pecaAtualizar) {
         PecaEntity pecaExistente = pecaRepository.findById(id)
                 .orElseThrow(NoSuchElementException::new);
 
@@ -40,8 +48,8 @@ public class PecaService {
         return pecaRepository.save(pecaExistente);
     }
 
-    public void deletarPeca(Integer id){
-        if(pecaRepository.existsById(id)){
+    public void deletarPeca(Integer id) {
+        if (pecaRepository.existsById(id)) {
             pecaRepository.deleteById(id);
         }
     }

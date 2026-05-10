@@ -1,6 +1,5 @@
 package com.testeSistemas.hikoki.Entity;
 
-import com.testeSistemas.hikoki.Repository.VersionRepository;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,6 +14,7 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class PecaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -22,6 +22,6 @@ public class PecaEntity {
 
     private String nomePeca;
     private Date dataCriacao;
-
-
+    private Double versao;
+    private String urlDoc;
 }

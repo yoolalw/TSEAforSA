@@ -12,6 +12,7 @@ import java.util.List;
 @RequestMapping("/peca")
 @CrossOrigin(origins = "*")
 public class PecaController {
+
     @Autowired
     private PecaService pecaService;
 
@@ -29,6 +30,11 @@ public class PecaController {
     @PostMapping("/novaPeca")
     public ResponseEntity<PecaEntity> adicionarPeca(@RequestBody PecaEntity pecaEntity) {
         return ResponseEntity.ok(pecaService.adicionarPeca(pecaEntity));
+    }
+
+    @PostMapping("/novaVersao")
+    public ResponseEntity<PecaEntity> adicionarVersao(@RequestBody PecaEntity pecaEntity){
+        return ResponseEntity.ok(pecaService.adicionarVersao(pecaEntity));
     }
 
     @PutMapping("/{id}")
