@@ -25,6 +25,8 @@ public class UserService {
         return userRepository.save(userEntity);
     }
 
+
+
     public UserEntity atualizarUsuario(Integer id, UserEntity userEntity){
         UserEntity userExistente = userRepository.findById(id)
                 .orElseThrow(NoSuchElementException::new);

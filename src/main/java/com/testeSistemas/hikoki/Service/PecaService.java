@@ -27,6 +27,7 @@ public class PecaService {
                 .orElseThrow(NoSuchElementException::new);
     }
 
+
     public PecaEntity adicionarPeca(PecaEntity pecaEntity) {
         return pecaRepository.save(pecaEntity);
     }
