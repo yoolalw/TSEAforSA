@@ -24,4 +24,9 @@ public class PecaEntity {
     private Date dataCriacao;
     private Double versao;
     private String urlDoc;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private DocCliente cliente;
+
 }
