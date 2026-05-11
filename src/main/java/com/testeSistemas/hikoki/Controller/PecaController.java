@@ -32,16 +32,10 @@ public class PecaController {
         return ResponseEntity.ok(pecaService.adicionarPeca(pecaEntity));
     }
 
-
-    @PutMapping("/novaVersao/{id}")
-    public ResponseEntity<PecaEntity> adicionarVersao(@RequestBody PecaEntity versao){
-        return ResponseEntity.ok(pecaService.adicionarVersao(versao));
-    }
-
     @PutMapping("/{id}")
     public ResponseEntity<PecaEntity> atualizarNome(@PathVariable Integer id,
                                                     @RequestBody PecaEntity pecaEntity) {
-        return ResponseEntity.ok(pecaService.alterarNome(id, pecaEntity));
+        return ResponseEntity.ok(pecaService.atualizarPeca(id, pecaEntity));
     }
 
     @DeleteMapping("/{id}")

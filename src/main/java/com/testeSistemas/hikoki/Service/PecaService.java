@@ -32,19 +32,14 @@ public class PecaService {
         return pecaRepository.save(pecaEntity);
     }
 
-    public PecaEntity adicionarVersao(PecaEntity pecaEntity) {
-        if (pecaRepository.findByVersao(pecaEntity.getVersao()).isPresent()) {
-            throw new NoSuchElementException("Essa versao ja existe.");
-        }
-        return pecaRepository.save(pecaEntity);
-    }
 
-
-    public PecaEntity alterarNome(Integer id, PecaEntity pecaAtualizar) {
+    public PecaEntity atualizarPeca(Integer id, PecaEntity pecaAtualizar) {
         PecaEntity pecaExistente = pecaRepository.findById(id)
                 .orElseThrow(NoSuchElementException::new);
 
-        pecaExistente.setNomePeca(pecaAtualizar.getNomePeca());
+
+        pecaExistente.setVersao(pecaAtualizar.getVersao());
+        pecaExistente.setUrlDoc(pecaAtualizar.getUrlDoc());
 
         return pecaRepository.save(pecaExistente);
     }
