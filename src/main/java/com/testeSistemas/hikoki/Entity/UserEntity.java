@@ -19,7 +19,7 @@ public class UserEntity {
     @Id
     private Integer idUser;
 
-    private Integer key;
+    private String key;
     private String nomeUser;
     private String setor;
 

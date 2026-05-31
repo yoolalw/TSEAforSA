@@ -1,9 +1,10 @@
 package com.testeSistemas.hikoki.Service;
 
 import com.testeSistemas.hikoki.Entity.PecaEntity;
+import com.testeSistemas.hikoki.Entity.UserEntity;
 import com.testeSistemas.hikoki.Repository.PecaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.data.autoconfigure.web.DataWebProperties;
+
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -45,10 +46,7 @@ public class PecaService {
     }
 
     public void deletarPeca(Integer id) {
-        if (pecaRepository.existsById(id)) {
-            pecaRepository.deleteById(id);
-        }
+        PecaEntity peca = pecaRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        pecaRepository.delete(peca);
     }
-
-
 }
