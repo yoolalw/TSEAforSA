@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class DocClienteService {
@@ -25,10 +26,7 @@ public class DocClienteService {
     }
 
     public void deletarDocCliente(Integer id) {
-        if(docClienteRepository.existsById(id)) {
-            docClienteRepository.deleteById(id);
-        }
-
+        DocCliente docCliente = docClienteRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        docClienteRepository.delete(docCliente);
     }
-
 }
